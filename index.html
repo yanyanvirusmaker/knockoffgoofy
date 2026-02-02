@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>knockoffwoody.com</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+        color: white;
+    }
+
+    #container {
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+    }
+
+    button {
+        font-size: 28px;
+        padding: 20px 40px;
+        background: limegreen;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        color: black;
+        font-weight: bold;
+    }
+
+    button:hover {
+        background: #00cc00;
+    }
+
+    /* Fire effect */
+    .fire {
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        background: radial-gradient(circle, yellow, orange, red);
+        border-radius: 50%;
+        animation: flicker 0.3s infinite alternate;
+        pointer-events: none;
+    }
+
+    @keyframes flicker {
+        from { transform: scale(1); opacity: 0.8; }
+        to { transform: scale(1.3); opacity: 1; }
+    }
+
+    #message {
+        font-size: 60px;
+        color: red;
+        text-shadow: 0 0 20px red;
+        display: none;
+    }
+</style>
+</head>
+<body>
+
+<div id="container">
+    <h1 id="title">CLAIM YOUR ROBUX</h1>
+    <button id="robuxBtn">CLAIM ROBUX</button>
+    <div id="message">KNOCK OFF WOODY WILL GET YOU</div>
+</div>
+
+<script>
+const btn = document.getElementById("robuxBtn");
+const title = document.getElementById("title");
+const msg = document.getElementById("message");
+
+btn.onclick = () => {
+    // Change background to red
+    document.body.style.background = "darkred";
+
+    // Remove button
+    btn.remove();
+
+    // Show warning text
+    title.style.display = "none";
+    msg.style.display = "block";
+
+    // Spawn fire everywhere
+    for (let i = 0; i < 60; i++) {
+        const fire = document.createElement("div");
+        fire.className = "fire";
+        fire.style.left = Math.random() * window.innerWidth + "px";
+        fire.style.top = Math.random() * window.innerHeight + "px";
+        document.body.appendChild(fire);
+    }
+};
+</script>
+
+</body>
+</html>
